@@ -1,0 +1,97 @@
+#:kivy 1.0.9
+
+<PongPaddleLeft>:
+	size: 34, 200
+	canvas:
+		Rectangle:
+			source: 'data/chops_300x52_left.png'
+			pos:self.pos
+			size:self.size
+
+<TeamLeft>:
+	size: 170, 38
+	canvas:
+		Rectangle:
+			source: 'data/white_text_logo_340x76_new_right.png'
+			pos: self.pos
+			size: self.size
+
+
+<PongPaddleRight>:
+	size: 34, 200
+	canvas:
+		Rectangle:
+			source: 'data/chops_300x52_right.png'
+			pos:self.pos
+			size:self.size
+
+
+<TeamRight>:
+	size: 170, 38
+	canvas:
+		Rectangle:
+			source: 'data/white_text_logo_340x76_new_right.png'
+			pos: self.pos
+			size: self.size
+
+<PongGame>:
+		
+	ball: pong_ball
+	player1: player_left
+	team1: team_left
+	player2: player_right
+	team2: team_right
+	
+
+	canvas:
+		Rectangle:
+			pos: self.center_x - 5, 0
+			size: 10, self.height
+
+	Label:
+		font_size: 60
+		center_x: 170 + 20 + 40
+		center_y: 40
+		text: str(root.player1.score)
+
+	Label:
+		font_size: 60
+		center_x: root.width - 170 -20 - 40
+		center_y: root.height - 40
+		#top: root.top + 8
+		text: str(root.player2.score)
+
+	PongBall:
+		id: pong_ball
+		center: self.parent.center
+
+	PongPaddleLeft:
+		id: player_left
+		x: root.x
+		center_y: root.center_y
+
+	TeamLeft:
+		id: team_left
+		x: 20
+		y: 20
+
+	PongPaddleRight:
+		id: player_right
+		x: root.width-self.width
+		center_y: root.center_y
+
+	TeamRight:
+		id: team_right
+		x: root.width - self.width - 20
+		y: root.height - self.height - 20
+
+
+
+<PongBall>:
+	size: 75, 75
+	canvas:
+		Rectangle:
+			pos: self.pos
+			source: 'bin/data/logo_194x194.png'
+			size: self.size
+
